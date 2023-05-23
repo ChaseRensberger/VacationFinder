@@ -37,13 +37,17 @@ const Question = (params: Props) => {
 					{params.choices.map((choice) => {
 						return (
 							<RadioGroup.Item
-								className="text-md bg-gray-800 hover:bg-gray-500 p-1 px-2 rounded-sm"
+								className={`text-md bg-zinc-600 hover:bg-slate-500 p-1 px-2 rounded-md ${
+									choice == params.selectedValue
+										? "bg-violet-500 hover:bg-violet-500"
+										: ""
+								}`}
 								value={choice}
 								id={choice}
 								key={choice}
 							>
 								<label htmlFor={choice}>{choice}</label>
-								<RadioGroup.Indicator className="flex items-center justify-center w-full h-full relative after:content-[''] after:block after:w-[11px] after:h-[11px] after:rounded-[50%] after:bg-violet11" />
+								{/* <RadioGroup.Indicator className="flex items-center justify-center w-full h-full relative after:content-[''] after:block after:w-[11px] after:h-[11px] after:rounded-[50%] after:bg-violet11" /> */}
 							</RadioGroup.Item>
 						);
 					})}
