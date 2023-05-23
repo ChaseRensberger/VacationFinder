@@ -1,8 +1,7 @@
 "use client";
-import * as Collapsible from "@radix-ui/react-collapsible";
-import { RowSpacingIcon, Cross2Icon } from "@radix-ui/react-icons";
-import { useState } from "react";
 import * as Form from "@radix-ui/react-form";
+import Choice from "../Choice";
+import { useState } from "react";
 
 interface Props {
 	formName: string;
@@ -11,12 +10,27 @@ interface Props {
 }
 
 const Question = (params: Props) => {
-	const [open, setOpen] = useState(false);
+	const [selectedChoice, setSelectedChoice] = useState<string | null>(null);
+	const handleChoiceClick = (choice: string) => {
+		setSelectedChoice(choice);
+	};
 	return (
 		<li>
 			<Form.Field name={params.formName}>
 				<Form.Label>{params.prompt}</Form.Label>
-				<Form.Control asChild></Form.Control>
+				<Form.Control asChild className="flex flex-row gap-2.5">
+					<ul>
+						{params.choices.map((choice: string) => (
+							<Choice
+								choiceValue={choice}
+								onClick={() => {
+									handleChoiceClick(choice);
+								}}
+								isSelected={choice == selectedChoice}
+							/>
+						))}
+					</ul>
+				</Form.Control>
 			</Form.Field>
 		</li>
 	);
