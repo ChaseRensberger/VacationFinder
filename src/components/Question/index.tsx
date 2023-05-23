@@ -1,6 +1,11 @@
 "use client";
 import * as RadioGroup from "@radix-ui/react-radio-group";
-
+import { motion } from "framer-motion";
+import {
+	defaultAnimate,
+	defaultInitial,
+	defaultTransition,
+} from "@/lib/Animation";
 interface Props {
 	formQuestion: string;
 	prompt: string;
@@ -14,8 +19,14 @@ const Question = (params: Props) => {
 		params.setSelectedValue(value);
 	};
 	return (
-		<li className="w-full" key={params.formQuestion}>
-			<div className="w-full flex flex-col gap-6">
+		<motion.li
+			className="w-full"
+			key={params.formQuestion}
+			initial={defaultInitial}
+			animate={defaultAnimate}
+			transition={defaultTransition}
+		>
+			<div className="flex flex-col gap-6">
 				<h2>{params.prompt}</h2>
 				<RadioGroup.Root
 					className="flex flex-row gap-6"
@@ -38,7 +49,7 @@ const Question = (params: Props) => {
 					})}
 				</RadioGroup.Root>
 			</div>
-		</li>
+		</motion.li>
 	);
 };
 
