@@ -37,11 +37,11 @@ const Question = (params: Props) => {
 					{params.choices.map((choice) => {
 						return (
 							<RadioGroup.Item
-								className={`text-md bg-zinc-600 hover:bg-slate-500 p-1 px-2 rounded-md ${
+								className={
 									choice == params.selectedValue
-										? "bg-violet-500 hover:bg-violet-500"
-										: ""
-								}`}
+										? "text-md bg-violet-500 p-1 px-2 rounded-md"
+										: "text-md bg-zinc-600 hover:bg-zinc-500 p-1 px-2 rounded-md "
+								}
 								value={choice}
 								id={choice}
 								key={choice}
