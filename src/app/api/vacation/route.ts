@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { Configuration, OpenAIApi } from "openai";
+import { systemSetupPrompt } from "@/lib/config";
 
 const configuration = new Configuration({
 	apiKey: process.env.OPENAI_API_KEY,
@@ -10,12 +11,15 @@ const generatePrompt = () => {
 	return "I like to travel to warm places.";
 };
 
-export async function GET() {
+export async function POST(req: Request) {
 	if (!configuration) {
 		return new NextResponse("INVALID API KEY", {
 			status: 500,
 		});
 	}
+
+	const reqBody = await req.json();
+	return NextResponse.json({ reqBody });
 
 	try {
 		const completion = await openai.createChatCompletion({
@@ -23,8 +27,7 @@ export async function GET() {
 			messages: [
 				{
 					role: "system",
-					content:
-						"You are an award winning travel agent designed to help people find the perfect place to travel. Please make your response straight to the point and in the following format: DESTINATION: PLACES TO GO: THINGS TO DO: (Don't include any other content and please only provide those one value for each of those)Please be begin your response with DESTINATION: and do not put anything else before that. Also this is for an app and the user should not know you are chatgpt so no saying youre an AI language model or anything like that.",
+					content: systemSetupPrompt,
 				},
 				{ role: "assistant", content: generatePrompt() },
 			],

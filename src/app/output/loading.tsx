@@ -4,7 +4,7 @@ import {
 	defaultAnimate,
 	defaultInitial,
 	defaultTransition,
-} from "@/lib/Animation";
+} from "@/lib/config";
 export default async function LoadingResponse() {
 	return (
 		<main className="flex min-h-screen flex-col items-center p-24 gap-28">

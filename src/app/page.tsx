@@ -7,7 +7,7 @@ import {
 	defaultAnimate,
 	defaultInitial,
 	defaultTransition,
-} from "@/lib/Animation";
+} from "@/lib/config";
 import { useForm } from "@/components/context/FormProvider";
 import { useRouter } from "next/navigation";
 

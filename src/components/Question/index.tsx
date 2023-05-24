@@ -5,7 +5,7 @@ import {
 	defaultAnimate,
 	defaultInitial,
 	defaultTransition,
-} from "@/lib/Animation";
+} from "@/lib/config";
 interface Props {
 	formQuestion: string;
 	prompt: string;
