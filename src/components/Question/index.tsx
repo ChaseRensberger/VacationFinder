@@ -31,6 +31,7 @@ const Question = (params: Props) => {
 				<RadioGroup.Root
 					className="flex flex-row gap-6"
 					aria-label={params.prompt}
+					// TODO: look in to what value is doing
 					value={params.selectedValue}
 					onValueChange={handleValueChange}
 				>

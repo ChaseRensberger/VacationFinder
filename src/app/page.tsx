@@ -8,14 +8,21 @@ import {
 	defaultInitial,
 	defaultTransition,
 } from "@/lib/Animation";
+import { useForm } from "@/components/context/FormProvider";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
 	const [selectedValues, setSelectedValues] = useState<any>({});
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 
+	const { setFormData } = useForm();
+	const router = useRouter();
+
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		console.log(selectedValues);
+		setFormData(selectedValues);
+		router.push("/output");
 	};
 
 	const handleOptionChange = (questionId: number, optionValue: string) => {
