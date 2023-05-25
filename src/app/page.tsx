@@ -38,7 +38,7 @@ export default function Home() {
 	return (
 		<main className="flex min-h-screen flex-col items-center p-24 gap-16">
 			<motion.h1
-				className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-pink-500"
+				className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-pink-500 text-center"
 				initial={defaultInitial}
 				animate={defaultAnimate}
 				transition={defaultTransition}

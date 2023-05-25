@@ -7,8 +7,8 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-const generatePrompt = () => {
-	return "I like to travel to warm places.";
+const generatePrompt = (reqBody: JSON) => {
+	return JSON.stringify(reqBody);
 };
 
 export async function POST(req: Request) {
@@ -19,7 +19,6 @@ export async function POST(req: Request) {
 	}
 
 	const reqBody = await req.json();
-	return NextResponse.json({ reqBody });
 
 	try {
 		const completion = await openai.createChatCompletion({
@@ -29,7 +28,7 @@ export async function POST(req: Request) {
 					role: "system",
 					content: systemSetupPrompt,
 				},
-				{ role: "assistant", content: generatePrompt() },
+				{ role: "assistant", content: generatePrompt(reqBody) },
 			],
 			temperature: 0.6,
 		});
