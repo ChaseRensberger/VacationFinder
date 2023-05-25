@@ -7,6 +7,8 @@ export const systemSetupPrompt =
 
 export const checkEnviroment = () => {
 	const dev = process.env.NODE_ENV !== "production";
-	let baseUrl = dev ? "http://localhost:3000" : process.env.VERCEL_URL;
+	let baseUrl = dev
+		? "http://localhost:3000"
+		: `https://${process.env.VERCEL_URL}`;
 	return baseUrl;
 };
