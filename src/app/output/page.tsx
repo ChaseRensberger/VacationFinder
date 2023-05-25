@@ -6,11 +6,9 @@ import {
 	defaultAnimate,
 	defaultTransition,
 } from "@/lib/config";
-import { useRouter } from "next/navigation";
-import { checkEnviroment } from "@/lib/config";
 
 const getFormOutput = async (formInput: string) => {
-	const formOutput = await fetch(checkEnviroment().concat("/api/vacation"), {
+	const formOutput = await fetch("/api/vacation", {
 		method: "POST",
 		body: formInput,
 	}).then((res) => {
