@@ -8,10 +8,13 @@ import {
 } from "@/lib/config";
 
 const getFormOutput = async (formInput: string) => {
-	const formOutput = await fetch("../api/vacation", {
-		method: "POST",
-		body: formInput,
-	}).then((res) => {
+	const formOutput = await fetch(
+		`${process.env.NEXT_PUBLIC_BASE_URL}/api/vacation`,
+		{
+			method: "POST",
+			body: formInput,
+		}
+	).then((res) => {
 		if (!res.ok) {
 			throw new Error("Failed to fetch data");
 		} else {
