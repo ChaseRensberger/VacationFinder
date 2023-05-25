@@ -11,6 +11,7 @@ import { checkEnviroment } from "@/lib/config";
 const getFormOutput = async (formInput: string) => {
 	const formOutput = await fetch(`${checkEnviroment()}/api/vacation`, {
 		method: "POST",
+		headers: { "Content-Length": "0" },
 		body: formInput,
 	}).then((res) => {
 		if (!res.ok) {
