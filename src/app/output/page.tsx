@@ -8,7 +8,7 @@ import {
 } from "@/lib/config";
 import { checkEnviroment } from "@/lib/config";
 
-const getFormOutput = async (formInput: string) => {
+const getFormOutput = async (formInput: JSON) => {
 	const formOutput = await fetch(`${checkEnviroment()}/api/vacation`, {
 		method: "POST",
 		body: JSON.stringify(formInput),
@@ -25,7 +25,7 @@ const getFormOutput = async (formInput: string) => {
 // TODO: Fix it so resubmitting form without proper content redirects you
 const Output = async () => {
 	const { formData } = useForm();
-	const vacationResponse = await getFormOutput(JSON.stringify(formData));
+	const vacationResponse = await getFormOutput(formData);
 	// const router = useRouter();
 
 	return (
