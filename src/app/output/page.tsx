@@ -8,7 +8,7 @@ import {
 } from "@/lib/config";
 
 const getFormOutput = async (formInput: string) => {
-	const formOutput = await fetch("/api/vacation", {
+	const formOutput = await fetch("../api/vacation", {
 		method: "POST",
 		body: formInput,
 	}).then((res) => {
