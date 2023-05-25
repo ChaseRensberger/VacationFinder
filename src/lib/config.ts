@@ -6,9 +6,7 @@ export const systemSetupPrompt =
 	"You are a travel agent. I will give you a JSON message with ten choices about the kind of place I would like to go. Respond in the following format:\nDESTINATION:\nPLACES TO GO:\nTHINGS TO DO:";
 
 export const checkEnviroment = () => {
-	let baseUrl =
-		process.env.NODE_ENV == "development"
-			? "http://localhost:3000"
-			: "vacation-finder-bxf03e8ts-chaserensberger.vercel.app";
+	const dev = process.env.NODE_ENV !== "production";
+	let baseUrl = dev ? "http://localhost:3000" : process.env.VERCEL_URL;
 	return baseUrl;
 };
