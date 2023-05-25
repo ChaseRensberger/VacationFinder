@@ -6,11 +6,10 @@ import {
 	defaultAnimate,
 	defaultTransition,
 } from "@/lib/config";
-import { checkEnviroment } from "@/lib/config";
 
 const getFormOutput = async (formInput: string) => {
 	const formOutput = await fetch(
-		`http://${process.env.VERCEL_URL}/api/vacation`,
+		`https://${process.env.VERCEL_URL}/api/vacation`,
 		{
 			method: "POST",
 			body: formInput,
